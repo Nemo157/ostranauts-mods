@@ -1,0 +1,14 @@
+[
+  {
+    "strName": "ItmTrellis",
+    "aCOs": ["ItmTrellis=1.0x1"],
+    "aLoots"  : [],
+    "strType": "item"
+  },
+  {
+    "strName": "ItmTrellisLoose",
+    "aCOs": ["ItmTrellisLoose=1.0x1"],
+    "aLoots"  : [],
+    "strType": "item"
+  }
+]

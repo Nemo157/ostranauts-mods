@@ -1,0 +1,48 @@
+[
+    {
+      "strName": "TrellisInstall",
+      "strActionCO": "ItmTrellisLoose",
+      "strInteractionTemplate": "ACTInstallNoSparksTEMP",
+      "CTThem":  "TIsTrellisUninstalled" ,
+      "aInputs": [
+        "TIsTrellisUninstalled=1.0x1"
+      ],
+      "fTargetPointRange": 2.0,
+      "fDuration": 0.001,
+      "bSparks": false,
+      "aToolCTsUse": [
+        "TIsToolMortorq"
+      ],
+      "aLootCOs": [
+        "ItmTrellis"
+      ],
+      "strStartInstall": "ItmTrellis",
+      "strBuildType": "FURN",
+      "strJobType": "install",
+      "strAllowLootCTsThem": "CONDInstallProgressx5",
+      "strProgressStat": "StatInstallProgress",
+      "strCTThemMultCondTools": "IsToolMortorq",
+      "strCTThemMultCondUs": "StatInstallRateFURN"
+    },
+    {
+      "strName": "TrellisUninstall",
+      "strActionCO": "ItmTrellis",
+      "strInteractionTemplate": "ACTUninstallNoSparksTEMP",
+      "CTThem":  "TIsTrellisInstalled" ,
+      "aInputs": [],
+      "fTargetPointRange": 2.0,
+      "fDuration": 0.001,
+      "bSparks": false,
+      "aToolCTsUse": [
+        "TIsToolMortorq"
+      ],
+      "aLootCOs": [
+        "ItmTrellisLoose"
+      ],
+      "strJobType": "uninstall",
+      "strAllowLootCTsThem": "CONDUninstallProgressx5",
+      "strProgressStat": "StatUninstallProgress",
+      "strCTThemMultCondTools": "IsToolMortorq",
+      "strCTThemMultCondUs": "StatInstallRateFURN"
+    }
+]

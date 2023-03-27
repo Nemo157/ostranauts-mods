@@ -1,0 +1,53 @@
+[
+  {
+    "strName": "ItmTrellis",
+    "strNameFriendly": "Trellis",
+    "strDesc": "A bulkhead mounted trellis of decorative plants, commonly setup on ships for improving air quality",
+    "strItemDef": "ItmTrellis",
+    "strType": "Item",
+    "strLoot": null,
+    "aStartingConds": [
+      "IsPlant=1.0x1",
+      "IsTrellis=1.0x1",
+      "IsFlammable=1.0x1",
+      "IsInstalled=1.0x1",
+      "StatBasePrice=1.0x200.0",
+      "StatInstallProgressMax=1.0x40",
+      "StatUninstallProgressMax=1.0x40",
+      "StatMass=1.0x4.0",
+      "StatDamageMax=1.0x40"
+    ],
+    "aUpdateCommands": [
+      "GasRespire2,PlantO2,null",
+      "Destructable,StatDamage,ACTDefaultDestroy,StatDamageMax,1.0"
+    ],
+    "aTickers": [
+      "Photosynthesize"
+    ],
+    "strPortraitImg": "ItmTrellis"
+  },
+  {
+    "strName": "ItmTrellisLoose",
+    "strNameFriendly": "Trellis (Loose)",
+    "strDesc": "A bulkhead mounted trellis of decorative plants, commonly setup on ships for improving air quality",
+    "strItemDef": "ItmTrellisLoose",
+    "strType": "Item",
+    "aStartingConds": [
+      "IsTrellis=1.0x1",
+      "IsFlammable=1.0x1",
+      "IsCumbersome=1.0x1.0",
+      "StatBasePrice=1.0x200.0",
+      "StatInstallProgressMax=1.0x40",
+      "StatUninstallProgressMax=1.0x40",
+      "StatMass=1.0x4.0",
+      "StatDamageMax=1.0x4"
+    ],
+    "aUpdateCommands": [
+      "Destructable,StatDamage,ACTDefaultDestroy,StatDamageMax,1.0"
+    ],
+    "mapSlotEffects": [
+      "drag","Blank"
+    ],
+    "strPortraitImg": "ItmTrellisLoose"
+  }
+]

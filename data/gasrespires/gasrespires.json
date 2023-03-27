@@ -1,0 +1,20 @@
+[
+  {
+    "strName": "PlantO2",
+    "strPtA": "",
+    "strPtB": "",
+    "strCTA": "TIsAirtightRoom",
+    "strCTB": "TIsAirtightRoom",
+    "strGasIn": "O2",
+    "strGasOut": "CO2",
+    "fVol": 1.0,
+    "fConvRate": 0.045,
+    "fGasPressTotalRef": 101.3,
+    "fSignalCheckRate": 1.0,
+    "strSignalCTMain": "TIsStatOxygen",
+    "fStatRate": -5.0,
+    "strStat": "StatOxygen",
+    "bAllowExternA": true,
+    "bAllowExternB": true
+  }
+]

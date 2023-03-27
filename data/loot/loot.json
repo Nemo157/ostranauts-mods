@@ -1,0 +1,23 @@
+[
+  {
+    "strName" : "ItmRandomLot18",
+    "aCOs": ["ItmTrellisLoose=1.0x1"],
+    "aLoots"  : [],
+    "strType" : "item"
+  },
+  {
+    "strName" : "ItmRandomLotCrewStartLoot18",
+    "aCOs": ["ItmTrellisLoose=1.0x1"],
+    "aLoots"  : [],
+    "strType" : "item"
+  },
+
+  {
+    "strName": "CONDTickPhotosynthesize",
+    "aCOs": [
+      "StatOxygen=1.0x0.001215"
+    ],
+    "aLoots": [],
+    "strType": "condition"
+  }
+]

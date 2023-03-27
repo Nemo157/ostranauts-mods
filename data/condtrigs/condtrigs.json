@@ -1,0 +1,57 @@
+[
+  {
+    "strName": "TIsAirtightRoom",
+    "strCondName": "",
+    "fChance": 1.0,
+    "fCount": 1.0,
+    "aReqs": [
+      "IsAirtight",
+      "IsRoom"
+    ],
+    "aForbids": [],
+    "aTriggers": [],
+    "bAND": true
+  },
+  {
+    "strName": "TIsPlant",
+    "strCondName": "",
+    "fChance": 1.0,
+    "fCount": 1.0,
+    "aReqs": [
+      "IsPlant"
+    ],
+    "aForbids": [],
+    "aTriggers": [],
+    "bAND": true
+  },
+  {
+    "strName": "TIsTrellisUninstalled",
+    "strCondName": "",
+    "fChance": 1.0,
+    "fCount": 1.0,
+    "aReqs": [
+      "IsTrellis"
+    ],
+    "aForbids": [
+      "IsInstalled",
+      "IsDamaged"
+    ],
+    "aTriggers": [],
+    "bAND": true
+  },
+  {
+    "strName": "TIsTrellisInstalled",
+    "strCondName": "",
+    "fChance": 1.0,
+    "fCount": 1.0,
+    "aReqs": [
+      "IsTrellis",
+      "IsInstalled"
+    ],
+    "aForbids": [
+      "IsDamaged"
+    ],
+    "aTriggers": [],
+    "bAND": true
+  }
+]
