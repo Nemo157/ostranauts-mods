@@ -15,14 +15,23 @@
       "StatInstallProgressMax=1.0x40",
       "StatUninstallProgressMax=1.0x40",
       "StatMass=1.0x4.0",
-      "StatDamageMax=1.0x40"
+      "StatDamageMax=1.0x40",
+      "StatEnergy=1.0x20.0",
+      "StatEnergyDeficit=1.0x80.0",
+      "StatSugar=1.0x20.0",
+      "StatSugarDeficit=1.0x80.0"
+    ],
+    "aStartingCondRules": [
+      "DcStatRespiring=1",
+      "DcStatPhotosynthesizing=1"
     ],
     "aUpdateCommands": [
-      "GasRespire2,PlantO2,null",
+      "GasRespire2,PlantRespiration,null",
+      "GasRespire2,PlantPhotosynthesis,null",
       "Destructable,StatDamage,ACTDefaultDestroy,StatDamageMax,1.0"
     ],
     "aTickers": [
-      "Photosynthesize"
+      "BaseEnergyLoad"
     ],
     "strPortraitImg": "ItmTrellis"
   },

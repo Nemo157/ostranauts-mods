@@ -1,33 +1,21 @@
 [
   {
     "strName": "TIsAirtightRoom",
-    "strCondName": "",
-    "fChance": 1.0,
-    "fCount": 1.0,
     "aReqs": [
       "IsAirtight",
       "IsRoom"
     ],
-    "aForbids": [],
-    "aTriggers": [],
     "bAND": true
   },
   {
     "strName": "TIsPlant",
-    "strCondName": "",
-    "fChance": 1.0,
-    "fCount": 1.0,
     "aReqs": [
       "IsPlant"
     ],
-    "aForbids": [],
-    "aTriggers": [],
     "bAND": true
   },
   {
     "strName": "TIsTrellisUninstalled",
-    "strCondName": "",
-    "fChance": 1.0,
     "fCount": 1.0,
     "aReqs": [
       "IsTrellis"
@@ -36,13 +24,10 @@
       "IsInstalled",
       "IsDamaged"
     ],
-    "aTriggers": [],
     "bAND": true
   },
   {
     "strName": "TIsTrellisInstalled",
-    "strCondName": "",
-    "fChance": 1.0,
     "fCount": 1.0,
     "aReqs": [
       "IsTrellis",
@@ -51,7 +36,71 @@
     "aForbids": [
       "IsDamaged"
     ],
-    "aTriggers": [],
+    "bAND": true
+  },
+  {
+    "strName": "TIsStatEnergyDeficit",
+    "aReqs": [
+      "StatEnergyDeficit"
+    ],
+    "bAND": true
+  },
+  {
+    "strName": "TIsStatSugarDeficit",
+    "aReqs": [
+      "StatSugarDeficit"
+    ],
+    "bAND": true
+  },
+
+  {
+    "strName": "TIsReadyRespiration",
+    "aReqs": [
+      "IsPlant",
+      "StatEnergyDeficit",
+      "StatSugar"
+    ],
+    "bAND": true
+  },
+  {
+    "strName": "TIsReadyPhotosynthesis",
+    "aReqs": [
+      "IsPlant",
+      "StatSugarDeficit"
+    ],
+    "bAND": true
+  },
+
+  {
+    "strName": "TUpStatEnergy",
+    "strCondName": "StatEnergy",
+    "fCount": 1.0,
+    "bAND": true
+  },
+  {
+    "strName": "TDnStatEnergy",
+    "strCondName": "StatEnergy",
+    "fCount": -1.0,
+    "bAND": true
+  },
+
+  {
+    "strName": "TUpStatSugar",
+    "strCondName": "StatSugar",
+    "fCount": 1.0,
+    "bAND": true
+  },
+
+  {
+    "strName": "TDnStatRespiring",
+    "strCondName": "StatRespiring",
+    "fCount": -1.0,
+    "bAND": true
+  },
+  {
+    "strName": "TDnStatPhotosynthesizing",
+    "strCondName": "StatPhotosynthesizing",
+    "fCount": -1.0,
     "bAND": true
   }
 ]

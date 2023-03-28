@@ -13,9 +13,45 @@
   },
 
   {
-    "strName": "CONDTickPhotosynthesize",
+    "strName": "CONDStatSugarPer",
     "aCOs": [
-      "StatOxygen=1.0x0.001215"
+      "-StatSugarDeficit=1.0x1.0"
+    ],
+    "aLoots": [],
+    "strType": "condition"
+  },
+
+  {
+    "strName": "CONDStatEnergyPer",
+    "aCOs": [
+      "-StatEnergyDeficit=1.0x1.0"
+    ],
+    "aLoots": [],
+    "strType": "condition"
+  },
+
+  {
+    "strName": "CONDStatRespiringDone",
+    "aCOs": [
+      "StatRespiringDone=1.0x1.0"
+    ],
+    "aLoots": [],
+    "strType": "condition"
+  },
+
+  {
+    "strName": "CONDStatPhotosynthesizingDone",
+    "aCOs": [
+      "StatPhotosynthesizingDone=1.0x1.0"
+    ],
+    "aLoots": [],
+    "strType": "condition"
+  },
+
+  {
+    "strName": "CONDTickEnergy",
+    "aCOs": [
+      "-StatEnergy=1.0x0.001215"
     ],
     "aLoots": [],
     "strType": "condition"

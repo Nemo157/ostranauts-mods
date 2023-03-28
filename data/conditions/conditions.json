@@ -1,0 +1,106 @@
+[
+  {
+    "strName": "StatEnergy",
+    "strNameFriendly": "",
+    "strColor": "Neutral",
+    "strDesc": "[us]'s current free energy.",
+    "bResetTimer": false,
+    "nDisplaySelf": 0,
+    "nDisplayOther": 0,
+    "bFatal": false,
+    "bRemoveAll" : false,
+    "aPer": ["CONDStatEnergyPer"]
+  },
+  {
+    "strName": "StatEnergyDeficit",
+    "strNameFriendly": "",
+    "strColor": "Neutral",
+    "strDesc": "[us]'s current lack of free energy.",
+    "bResetTimer": false,
+    "nDisplaySelf": 0,
+    "nDisplayOther": 0,
+    "bFatal": false,
+    "bRemoveAll" : false
+  },
+
+  {
+    "strName": "StatSugar",
+    "strNameFriendly": "",
+    "strColor": "Neutral",
+    "strDesc": "[us]'s current stored sugar.",
+    "bResetTimer": false,
+    "nDisplaySelf": 0,
+    "nDisplayOther": 0,
+    "bFatal": false,
+    "bRemoveAll" : false,
+    "aPer": ["CONDStatSugarPer"]
+  },
+  {
+    "strName": "StatSugarDeficit",
+    "strNameFriendly": "",
+    "strColor": "Neutral",
+    "strDesc": "[us]'s current lack of stored sugar.",
+    "bResetTimer": false,
+    "nDisplaySelf": 0,
+    "nDisplayOther": 0,
+    "bFatal": false,
+    "bRemoveAll" : false
+  },
+
+  {
+    "strName": "StatRespiring",
+    "strNameFriendly": "",
+    "strColor": "Neutral",
+    "strDesc": "[us] is respiring.",
+    "bResetTimer": false,
+    "nDisplaySelf": 0,
+    "nDisplayOther": 0,
+    "bFatal": false,
+    "bRemoveAll" : false
+  },
+  {
+    "strName": "StatRespiringDone",
+    "strNameFriendly": "",
+    "strColor": "Neutral",
+    "strDesc": "[us] has completed a round of respiring.",
+    "bResetTimer": false,
+    "nDisplaySelf": 0,
+    "nDisplayOther": 0,
+    "bFatal": false,
+    "bRemoveAll" : false,
+    "aNext": [
+      "TDnStatSugar",
+      "TUpStatEnergy",
+      "TDnStatRespiring"
+    ],
+    "fDuration": 0.001 
+  },
+
+  {
+    "strName": "StatPhotosynthesizing",
+    "strNameFriendly": "",
+    "strColor": "Neutral",
+    "strDesc": "[us] is photosynthesizing.",
+    "bResetTimer": false,
+    "nDisplaySelf": 0,
+    "nDisplayOther": 0,
+    "bFatal": false,
+    "bRemoveAll" : false
+  },
+  {
+    "strName": "StatPhotosynthesizingDone",
+    "strNameFriendly": "",
+    "strColor": "Neutral",
+    "strDesc": "[us] has completed a round of photosynthesizing.",
+    "bResetTimer": false,
+    "nDisplaySelf": 0,
+    "nDisplayOther": 0,
+    "bFatal": false,
+    "bRemoveAll" : false,
+    "aNext": [
+      "TUpStatSugar",
+      "TDnStatPhotosynthesizing"
+    ],
+    "fDuration": 0.001 
+  }
+]

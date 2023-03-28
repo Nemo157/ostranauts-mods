@@ -1,0 +1,28 @@
+[
+  {
+    "strName" : "DcStatRespiring",
+    "strCond" : "StatRespiring",
+    "aThresholds" : [
+      {
+        "strLootNew": "CONDStatRespiringDone",
+        "fMin": 1.0,
+        "fMax": 2.0,
+        "fMinAdd": 1,
+        "fMaxAdd": 1
+      }
+    ]
+  },
+  {
+    "strName" : "DcStatPhotosynthesizing",
+    "strCond" : "StatPhotosynthesizing",
+    "aThresholds" : [
+      {
+        "strLootNew": "CONDStatPhotosynthesizingDone",
+        "fMin": 1.0,
+        "fMax": 2.0,
+        "fMinAdd": 1,
+        "fMaxAdd": 1
+      }
+    ]
+  }
+]
