@@ -1,9 +1,0 @@
-[
-  {
-    "strName": "BaseEnergyLoad",
-    "strCondLoot": "CONDTickEnergy",
-    "fPeriod": 0.00111,
-    "fTimeLeft": 0.00111,
-    "bRepeat": true
-  }
-]

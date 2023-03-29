@@ -1,9 +1,0 @@
-[
-  {
-    "strName": "Simple Conditions",
-    "aValues": [
-      "IsPlant", "Plant", "[us] is a plant.", "2", "1", "Neutral",
-      "IsTrellis", "Trellis", "[us] is a trellis.", "2", "1", "Neutral"
-    ]
-  }
-]
