@@ -30,9 +30,11 @@ package schema
   fClampMax?: float
 }
 
+#UpdateCommand: =~"GasRespire2(,\\w+){2}|Destructable(,\\w+){3},\\d+(\\.\\d+)?"
+
+#ConditionRuleExpr: =~"\\w+=\\d+(\\.\\d+)?"
+
 #ConditionOwner: {
-  #UpdateCommand: =~"GasRespire2(,\\w+){2}|Destructable(,\\w+){3},\\d+(\\.\\d+)?"
-  #ConditionRuleExpr: =~"\\w+=\\d+(\\.\\d+)?"
   strNameFriendly: string
   strDesc: string
   strCODef?: string
@@ -64,14 +66,15 @@ package schema
   aTickers?: [...#Identifier]
 }
 
+#Threshold: {
+  strLootNew: #Identifier
+  fMinAdd: float | *1.0
+  fMaxAdd: float | *-1.0
+  fMin: float
+  fMax: float
+}
+
 #ConditionRule: {
-  #Threshold: {
-    strLootNew: #Identifier
-    fMinAdd: float | *1.0
-    fMaxAdd: float | *-1.0
-    fMin: float
-    fMax: float
-  }
   strCond: #Identifier
   fPref?: float
   aThresholds: [...#Threshold]
@@ -160,9 +163,10 @@ package schema
   aShadowBoxes?: [...string]
 }
 
+#LootType: "trigger" | "condition" | "item" | "interaction" | "text" | "relationship" | "lifeevent" | "ship"
+
 #Loot: {
-  #Type: "trigger" | "condition" | "item" | "interaction" | "text" | "relationship" | "lifeevent" | "ship"
-  strType: #Type
+  strType: #LootType
   bSuppress?: bool
   bNested?: bool
   aCOs?: [...#ConditionEquation]
