@@ -14,9 +14,9 @@ command: {
     task: {
       for filename, data in files {
         "\(filename)": {
-          _path: path.Join([basePath, filename])
-          _dir: path.Dir(_path)
-          _contents: json.Marshal(data)
+          let _path = path.Join([basePath, filename])
+          let _dir = path.Dir(_path)
+          let _contents = json.Indent(json.Marshal(data), "", "  ")
           mkdir: file.MkdirAll & {
             path: _dir
             $after: clean
@@ -48,8 +48,8 @@ command: {
           copy: {
             for _filename in list.FlattenN([rootGlob.files, dirsGlob.files], 1) {
               "\(_filename)": {
-                _path: path.Join([basePath, _filename])
-                _dir: path.Dir(_path)
+                let _path = path.Join([basePath, _filename])
+                let _dir = path.Dir(_path)
                 mkdir: file.MkdirAll & {
                   path: _dir
                   $after: clean
@@ -74,9 +74,27 @@ command: {
     }
   }
 
+  // Game crashes if no ships directory exists
+  ships: {
+    for modName, _ in mods {
+        "\(modName)": {
+          let _path = path.Join([basePath, modName, "data", "ships"])
+          mkdir: file.MkdirAll & {
+            path: _path
+            $after: clean
+          }
+          after: cli.Print & {
+            text: "touched \(_path)"
+            $after: mkdir
+          }
+        }
+    }
+  }
+
   build: {
     written: write
     copied: copy
+    shipped: ships
   }
 
   clean: file.RemoveAll & {
