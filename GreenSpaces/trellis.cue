@@ -1,4 +1,4 @@
-package greenspaces
+package GreenSpaces
 
 data: {
   conditions: {
