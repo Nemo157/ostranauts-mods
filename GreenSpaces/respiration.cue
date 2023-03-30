@@ -12,7 +12,7 @@ data: {
         "TUpStatEnergy",
         "TDnStatRespiring",
       ]
-      fDuration: 0.001 
+      fDuration: 0.00028
     }
   }
 
@@ -51,10 +51,11 @@ data: {
       strCTB: "TIsAirtightRoom"
       strGasIn: "O2"
       strGasOut: "CO2"
-      fVol: 0.00001
-      fConvRate: 0.8
+      fVol: 0.001
+      fConvRate: 0.0005
       strSignalCTMain: "TIsReadyRespiration"
       strStat: "StatRespiring"
+      fStatRate: 400.0
     }
   }
 

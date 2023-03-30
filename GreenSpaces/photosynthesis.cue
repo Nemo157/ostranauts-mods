@@ -9,9 +9,16 @@ data: {
       strDesc: "[us] has completed a round of photosynthesizing."
       aNext: [
         "TUpStatSugar",
+        "TUpStatPhotosynthesizingBlocked",
         "TDnStatPhotosynthesizing",
       ]
-      fDuration: 0.001
+      fDuration: 0.00028
+    }
+    // blocking photosynthesis for a set time caps the dependence on CO2
+    // partial pressue, allowing it to get to extreme levels still
+    StatPhotosynthesizingBlocked: {
+      strDesc: "[us] has photosynthesized enough for now."
+      fDuration: 0.1
     }
   }
 
@@ -36,10 +43,17 @@ data: {
         "IsPlant",
         "StatSugarDeficit",
       ]
+      aForbids: [
+        "StatPhotosynthesizingBlocked",
+      ]
     }
     TDnStatPhotosynthesizing: {
       strCondName: "StatPhotosynthesizing"
       fCount: -1.0
+    }
+    TUpStatPhotosynthesizingBlocked: {
+      strCondName: "StatPhotosynthesizingBlocked"
+      fCount: 1.0
     }
   }
 
@@ -49,12 +63,11 @@ data: {
       strCTB: "TIsAirtightRoom"
       strGasIn: "CO2"
       strGasOut: "O2"
-      fVol: 0.0001
-      fConvRate: 0.8
-      fGasPressTotalRef: 101.3
+      fVol: 0.001
+      fConvRate: 0.5625
       strSignalCTMain: "TIsReadyPhotosynthesis"
-      fStatRate: 1.0
       strStat: "StatPhotosynthesizing"
+      fStatRate: 5000.0
     }
   }
 
