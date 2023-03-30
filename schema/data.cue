@@ -107,8 +107,8 @@ package schema
   strSignalCTB?: #Identifier
   fStatRate?: float | *1.0
   strStat?: #Identifier
-  bAllowExternA?: bool | *true
-  bAllowExternB?: bool | *true
+  bAllowExternA: bool | *true
+  bAllowExternB: bool | *true
 }
 
 #Installable: {
