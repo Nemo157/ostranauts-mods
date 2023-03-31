@@ -20,56 +20,57 @@ data: {
       strDesc: "A bulkhead mounted trellis of decorative plants, commonly setup on ships for improving air quality"
       strItemDef: "ItmTrellis"
       strType: "item"
-      aStartingConds: [
-        "IsPlant=1.0x1",
-        "IsTrellis=1.0x1",
-        "IsFlammable=1.0x1",
-        "IsInstalled=1.0x1",
-        "StatBasePrice=1.0x200.0",
-        "StatInstallProgressMax=1.0x40",
-        "StatUninstallProgressMax=1.0x40",
-        "StatMass=1.0x4.0",
-        "StatDamageMax=1.0x40",
-        "StatEnergy=1.0x20.0",
-        "StatSugar=1.0x20.0",
-      ]
-      aStartingCondRules: [
-        "DcStatRespiring=1",
-        "DcStatPhotosynthesizing=1",
-        "DcStatSugar=100",
-        "DcStatEnergy=100",
-      ]
+      #StartingConds: {
+        IsPlant: _
+        IsTrellis: _
+        IsFlammable: _
+        IsInstalled: _
+        StatBasePrice: 200.0
+        StatInstallProgressMax: 40.0
+        StatUninstallProgressMax: 40.0
+        StatMass: 4.0
+        StatDamageMax: 40.0
+        StatEnergy: 20.0
+        StatSugar: 20.0
+      }
+      #StartingCondRules: {
+        DcStatRespiring: 1.0
+        DcStatPhotosynthesizing: 1.0
+        DcStatSugar: 100.0
+        DcStatEnergy: 100.0
+      }
       aUpdateCommands: [
         "GasRespire2,PlantRespiration,null",
         "GasRespire2,PlantPhotosynthesis,null",
         "Destructable,StatDamage,ACTDefaultDestroy,StatDamageMax,1.0",
       ]
-      aTickers: [
-        "BaseEnergyLoad",
-      ]
+      #Tickers: {
+        BaseEnergyLoad: _
+      }
       strPortraitImg: "ItmTrellis"
+      // _photosynthesizeable
     }
     ItmTrellisLoose: {
       strNameFriendly: "Trellis (Loose)"
       strDesc: "A bulkhead mounted trellis of decorative plants, commonly setup on ships for improving air quality"
       strItemDef: "ItmTrellisLoose"
       strType: "item"
-      aStartingConds: [
-        "IsTrellis=1.0x1",
-        "IsFlammable=1.0x1",
-        "IsCumbersome=1.0x1.0",
-        "StatBasePrice=1.0x200.0",
-        "StatInstallProgressMax=1.0x40",
-        "StatUninstallProgressMax=1.0x40",
-        "StatMass=1.0x4.0",
-        "StatDamageMax=1.0x4",
-      ]
+      #StartingConds: {
+        IsTrellis: _
+        IsFlammable: _
+        IsCumbersome: _
+        StatBasePrice: 200.0
+        StatInstallProgressMax: 40.0
+        StatUninstallProgressMax: 40.0
+        StatMass: 4.0
+        StatDamageMax: 4.0
+      }
       aUpdateCommands: [
         "Destructable,StatDamage,ACTDefaultDestroy,StatDamageMax,1.0",
       ]
-      mapSlotEffects: [
-        "drag","Blank",
-      ]
+      #SlotEffects: {
+        drag: "Blank"
+      }
       strPortraitImg: "ItmTrellisLoose"
     }
   }

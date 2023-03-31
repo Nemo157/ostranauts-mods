@@ -1,5 +1,9 @@
 package schema
 
+import (
+  "list"
+)
+
 #Identifier: =~"\\w+"
 
 // todo: other colors
@@ -48,8 +52,27 @@ package schema
   nContainerHeight?: int
   nContainerWidth?: int
   aInteractions?: [...string]
-  aStartingConds?: [...#ConditionEquation]
-  aStartingCondRules?: [...#ConditionRuleExpr]
+  #StartingConds: { [#Identifier]: float | *1.0 | { chance: float | *1.0, count: float | *1.0 } }
+  aStartingConds: [...#ConditionEquation] | *[
+    for condition, count in #StartingConds if *(count >= 0.0) | false {
+        "\(condition)=\(1.0)x\(count)"
+    }
+    for condition, count in #StartingConds if *(count < 0.0) | false {
+        "-\(condition)=\(1.0)x\(count)"
+    }
+    for condition, values in #StartingConds if *(values.count >= 0.0) | false {
+        "\(condition)=\(values.chance)x\(values.count)"
+    }
+    for condition, values in #StartingConds if *(values.count < 0.0) | false {
+        "-\(condition)=\(values.chance)x\(-values.count)"
+    }
+  ]
+  #StartingCondRules: { [#Identifier]: float }
+  aStartingCondRules: [...#ConditionRuleExpr] | *[
+    for rule, modifier in #StartingCondRules {
+        "\(rule)=\(modifier)"
+    }
+  ]
   bSaveMessageLog?: bool
   bSlotLocked?: bool
   mapPoints?: [...string]
@@ -59,11 +82,17 @@ package schema
   strAudioEmitter?: string
   jsonPI?: string
   aSlotsWeHave?: [...string]
-  mapSlotEffects?: [...string]
+  #SlotEffects: { [Slot=#Identifier]: #Identifier }
+  mapSlotEffects: [...string] | *list.FlattenN([
+    for slot, effect in #SlotEffects {
+        [slot, effect]
+    }
+  ], 1)
   mapChargeProfiles?: [...string]
   mapAltItemDefs?: [...string]
   aComponents?: [...string]
-  aTickers?: [...#Identifier]
+  #Tickers: { [#Identifier]: _ }
+  aTickers: [...#Identifier] | *[ for ticker, _ in #Tickers { ticker } ]
 }
 
 #Threshold: {
