@@ -13,6 +13,11 @@ _Respirable: {
   #Tickers: {
     BaseEnergyLoad: _
   }
+  #UpdateCommands: {
+    GasRespire2: {
+      PlantRespiration: _
+    }
+  }
 }
 
 data: {

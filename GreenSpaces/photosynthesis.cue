@@ -9,6 +9,11 @@ _Photosynthesizeable: {
     DcStatPhotosynthesizing: 1.0
     DcStatSugar: _
   }
+  #UpdateCommands: {
+    GasRespire2: {
+      PlantPhotosynthesis: _
+    }
+  }
 }
 
 data: {

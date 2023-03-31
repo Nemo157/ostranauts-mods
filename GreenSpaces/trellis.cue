@@ -27,6 +27,11 @@ data: {
         StatMass: 4.0
         StatDamageMax: 40.0
       }
+      #UpdateCommands: {
+        Destructable: {
+          StatDamage: _
+        }
+      }
     }
 
     ItmTrellis: {
@@ -39,11 +44,6 @@ data: {
         DcStatSugar: 100.0
         DcStatEnergy: 100.0
       }
-      aUpdateCommands: [
-        "GasRespire2,PlantRespiration,null",
-        "GasRespire2,PlantPhotosynthesis,null",
-        "Destructable,StatDamage,ACTDefaultDestroy,StatDamageMax,1.0",
-      ]
       strPortraitImg: "ItmTrellis"
       _ItmTrellisBase
       _Photosynthesizeable
@@ -56,9 +56,6 @@ data: {
       #StartingConds: {
         IsCumbersome: _
       }
-      aUpdateCommands: [
-        "Destructable,StatDamage,ACTDefaultDestroy,StatDamageMax,1.0",
-      ]
       #SlotEffects: {
         drag: "Blank"
       }

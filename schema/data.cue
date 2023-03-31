@@ -76,7 +76,25 @@ import (
   bSaveMessageLog?: bool
   bSlotLocked?: bool
   mapPoints?: [...string]
-  aUpdateCommands?: [...#UpdateCommand]
+  #UpdateCommands: {
+    GasRespire2: { [#Identifier]: #Identifier | *"null" }
+    Destructable: {
+      [Stat=#Identifier]: {
+        LootModeSwitch: #Identifier
+        DamageCondMax: #Identifier | *"\(Stat)Max"
+        SignalCheckPeriod: float | *1.0
+      }
+      StatDamage?: _ | *{ LootModeSwitch: "ACTDefaultDestroy" }
+    }
+  }
+  aUpdateCommands: [...#UpdateCommand] | *[
+    for id, data in #UpdateCommands.GasRespire2 {
+      "GasRespire2,\(id),\(data)"
+    }
+    for id, data in #UpdateCommands.Destructable {
+      "Destructable,\(id),\(data.LootModeSwitch),\(data.DamageCondMax),\(data.SignalCheckPeriod)"
+    }
+  ]
   mapGUIPropMaps?: [...string]
   strPortraitImg?: string
   strAudioEmitter?: string
