@@ -35,8 +35,10 @@ data: {
     TIsReadyRespiration: {
       aReqs: [
         "IsPlant",
-        "StatEnergyDeficit",
         "StatSugar",
+      ]
+      aForbids: [
+        "DcEnergyMax",
       ]
     }
     TDnStatRespiring: {

@@ -4,26 +4,30 @@ data: {
   conditions: {
     StatSugar: {
       strDesc: "[us]'s current stored sugar."
-      aPer: ["CONDStatSugarPer"]
     }
-    StatSugarDeficit: {
-      strDesc: "[us]'s current lack of stored sugar."
+    DcSugarMax: {
+      strDesc: "[us]'s is full on sugar."
+    }
+  }
+
+  condrules: {
+    DcStatSugar: {
+      strCond: "StatSugar"
+      aThresholds: [
+        { strLootNew: "CONDDcSugarMax", fMin: 1.0, fMax: 9e99 }
+      ]
     }
   }
 
   condtrigs: {
-    TIsStatSugarDeficit: {
-      aReqs: ["StatSugarDeficit"]
-    }
     TUpStatSugar: {
       strCondName: "StatSugar"
-      fCount: 1.0
     }
   }
 
   loot: {
-    CONDStatSugarPer: {
-      aCOs: ["-StatSugarDeficit=1.0x1.0"]
+    CONDDcSugarMax: {
+      aCOs: ["DcSugarMax=1.0x1.0"]
       strType: "condition"
     }
   }

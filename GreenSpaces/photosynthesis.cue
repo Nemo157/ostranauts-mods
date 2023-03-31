@@ -41,10 +41,10 @@ data: {
     TIsReadyPhotosynthesis: {
       aReqs: [
         "IsPlant",
-        "StatSugarDeficit",
       ]
       aForbids: [
         "StatPhotosynthesizingBlocked",
+        "DcSugarMax",
       ]
     }
     TDnStatPhotosynthesizing: {

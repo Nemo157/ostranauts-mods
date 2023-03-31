@@ -4,17 +4,22 @@ data: {
   conditions: {
     StatEnergy: {
       strDesc: "[us]'s current free energy."
-      aPer: ["CONDStatEnergyPer"]
     }
-    StatEnergyDeficit: {
-      strDesc: "[us]'s current lack of free energy."
+    DcEnergyMax: {
+      strDesc: "[us]'s is full on energy."
+    }
+  }
+
+  condrules: {
+    DcStatEnergy: {
+      strCond: "StatEnergy"
+      aThresholds: [
+        { strLootNew: "CONDDcEnergyMax", fMin: 1.0, fMax: 9e99 }
+      ]
     }
   }
 
   condtrigs: {
-    TIsStatEnergyDeficit: {
-      aReqs: ["StatEnergyDeficit"]
-    }
     TUpStatEnergy: {
       strCondName: "StatEnergy"
     }
@@ -25,13 +30,13 @@ data: {
   }
 
   loot: {
-    CONDStatEnergyPer: {
-      strType: "condition"
-      aCOs: ["-StatEnergyDeficit=1.0x1.0"]
-    }
     CONDTickEnergy: {
       strType: "condition"
       aCOs: ["-StatEnergy=1.0x0.001215"]
+    }
+    CONDDcEnergyMax: {
+      strType: "condition"
+      aCOs: ["DcEnergyMax=1.0x1.0"]
     }
   }
 

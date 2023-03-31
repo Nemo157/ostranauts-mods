@@ -31,13 +31,13 @@ data: {
         "StatMass=1.0x4.0",
         "StatDamageMax=1.0x40",
         "StatEnergy=1.0x20.0",
-        "StatEnergyDeficit=1.0x80.0",
         "StatSugar=1.0x20.0",
-        "StatSugarDeficit=1.0x80.0",
       ]
       aStartingCondRules: [
         "DcStatRespiring=1",
         "DcStatPhotosynthesizing=1",
+        "DcStatSugar=100",
+        "DcStatEnergy=100",
       ]
       aUpdateCommands: [
         "GasRespire2,PlantRespiration,null",
