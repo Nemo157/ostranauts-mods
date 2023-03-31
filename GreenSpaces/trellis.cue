@@ -15,27 +15,27 @@ data: {
   }
 
   condowners: {
-    ItmTrellis: {
-      strNameFriendly: "Trellis"
+    _ItmTrellisBase: {
       strDesc: "A bulkhead mounted trellis of decorative plants, commonly setup on ships for improving air quality"
-      strItemDef: "ItmTrellis"
       strType: "item"
       #StartingConds: {
-        IsPlant: _
         IsTrellis: _
         IsFlammable: _
-        IsInstalled: _
         StatBasePrice: 200.0
         StatInstallProgressMax: 40.0
         StatUninstallProgressMax: 40.0
         StatMass: 4.0
         StatDamageMax: 40.0
-        StatEnergy: 20.0
-        StatSugar: 20.0
+      }
+    }
+
+    ItmTrellis: {
+      strNameFriendly: "Trellis"
+      strItemDef: "ItmTrellis"
+      #StartingConds: {
+        IsInstalled: _
       }
       #StartingCondRules: {
-        DcStatRespiring: 1.0
-        DcStatPhotosynthesizing: 1.0
         DcStatSugar: 100.0
         DcStatEnergy: 100.0
       }
@@ -44,26 +44,17 @@ data: {
         "GasRespire2,PlantPhotosynthesis,null",
         "Destructable,StatDamage,ACTDefaultDestroy,StatDamageMax,1.0",
       ]
-      #Tickers: {
-        BaseEnergyLoad: _
-      }
       strPortraitImg: "ItmTrellis"
-      // _photosynthesizeable
+      _ItmTrellisBase
+      _Photosynthesizeable
+      _Respirable
     }
+
     ItmTrellisLoose: {
       strNameFriendly: "Trellis (Loose)"
-      strDesc: "A bulkhead mounted trellis of decorative plants, commonly setup on ships for improving air quality"
       strItemDef: "ItmTrellisLoose"
-      strType: "item"
       #StartingConds: {
-        IsTrellis: _
-        IsFlammable: _
         IsCumbersome: _
-        StatBasePrice: 200.0
-        StatInstallProgressMax: 40.0
-        StatUninstallProgressMax: 40.0
-        StatMass: 4.0
-        StatDamageMax: 4.0
       }
       aUpdateCommands: [
         "Destructable,StatDamage,ACTDefaultDestroy,StatDamageMax,1.0",
@@ -72,6 +63,7 @@ data: {
         drag: "Blank"
       }
       strPortraitImg: "ItmTrellisLoose"
+      _ItmTrellisBase
     }
   }
 

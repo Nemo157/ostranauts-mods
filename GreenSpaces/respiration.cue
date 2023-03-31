@@ -1,5 +1,20 @@
 package GreenSpaces
 
+_Respirable: {
+  #StartingConds: {
+    IsPlant: _
+    StatEnergy: _
+    StatSugar: _
+  }
+  #StartingCondRules: {
+    DcStatRespiring: 1.0
+    DcStatEnergy: _
+  }
+  #Tickers: {
+    BaseEnergyLoad: _
+  }
+}
+
 data: {
   conditions: {
     StatRespiring: {

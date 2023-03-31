@@ -1,5 +1,16 @@
 package GreenSpaces
 
+_Photosynthesizeable: {
+  #StartingConds: {
+    IsPlant: _
+    StatSugar: _
+  }
+  #StartingCondRules: {
+    DcStatPhotosynthesizing: 1.0
+    DcStatSugar: _
+  }
+}
+
 data: {
   conditions: {
     StatPhotosynthesizing: {
