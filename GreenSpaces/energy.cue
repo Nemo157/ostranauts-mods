@@ -9,11 +9,10 @@ data: {
 
   condrules: {
     DcStatEnergy: {
-      strCond: "StatEnergy"
-      aThresholds: [
-        { strLootNew: "CONDDcEnergyMin", fMin: 0.0, fMax: 0.2 },
-        { strLootNew: "CONDDcEnergyMax", fMin: 1.0, fMax: 9e99 },
-      ]
+      #Thresholds: {
+        CONDDcEnergyMin: { fMax: 0.2 }
+        CONDDcEnergyMax: { fMin: 1.0 }
+      }
     }
   }
 

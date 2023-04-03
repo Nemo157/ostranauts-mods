@@ -38,28 +38,16 @@ data: {
 
   condrules: {
     DcStatPhotosynthesizing: {
-      strCond: "StatPhotosynthesizing"
-      aThresholds: [
-        {
-          strLootNew: "CONDStatPhotosynthesizingDone"
-          fMin: 1.0
-          fMax: 2.0
-          fMinAdd: 1.0
-          fMaxAdd: 1.0
-        }
-      ]
+      #Thresholds: {
+        CONDStatPhotosynthesizingDone: { fMin: 1.0 }
+      }
     }
   }
 
   condtrigs: {
     TIsReadyPhotosynthesis: {
-      aReqs: [
-        "IsPlant",
-      ]
-      aForbids: [
-        "StatPhotosynthesizingBlocked",
-        "DcSugarMax",
-      ]
+      aReqs: ["IsPlant"]
+      aForbids: ["StatPhotosynthesizingBlocked", "DcSugarMax"]
     }
     TDnStatPhotosynthesizing: _
     TUpStatPhotosynthesizingBlocked: _

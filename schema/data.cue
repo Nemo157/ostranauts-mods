@@ -119,18 +119,35 @@ import (
   aTickers: [...#Identifier] | *[ for ticker, _ in #Tickers { ticker } ]
 }
 
-#Threshold: {
-  strLootNew: #Identifier
+#ThresholdValues: {
   fMinAdd: float | *1.0
   fMaxAdd: float | *-1.0
   fMin: float
   fMax: float
 }
 
+#Threshold: {
+  strLootNew: #Identifier
+  #ThresholdValues
+}
+
 #ConditionRule: {
   strCond: #Identifier
   fPref?: float
-  aThresholds: [...#Threshold]
+  #Thresholds: { [#Identifier]: #ThresholdValues }
+  aThresholds: [...#Threshold] | *{
+    let keys = [for key, _ in #Thresholds { key }]
+    [
+      for i in list.Range(0, len(keys), 1) {
+        {
+          strLootNew: keys[i]
+          fMin: _ | *(*#Thresholds[keys[i - 1]].fMax | 0.0)
+          fMax: _ | *9e99
+          #Thresholds[keys[i]]
+        }
+      }
+    ]
+  }
 }
 
 #ConditionTrigger: {
@@ -245,7 +262,10 @@ import (
 #Data: {
   conditions: { [Name=#Identifier]: #Condition }
   condowners: { [Name=#Identifier]: #ConditionOwner }
-  condrules: { [Name=#Identifier]: #ConditionRule }
+  condrules: {
+    [Name=#Identifier]: #ConditionRule
+    [Name=strings.HasPrefix("Dc")]: { strCond: strings.TrimPrefix(Name, "Dc") }
+  }
   condtrigs: {
     [Name=#Identifier]: #ConditionTrigger
     [Name=strings.HasPrefix("TUp")]: { strCondName: strings.TrimPrefix(Name, "TUp"), fCount: 1.0 }

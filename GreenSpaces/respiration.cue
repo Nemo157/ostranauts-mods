@@ -38,28 +38,16 @@ data: {
 
   condrules: {
     DcStatRespiring: {
-      strCond: "StatRespiring"
-      aThresholds: [
-        {
-          strLootNew: "CONDStatRespiringDone"
-          fMin: 1.0
-          fMax: 2.0
-          fMinAdd: 1.0
-          fMaxAdd: 1.0
-        }
-      ]
+      #Thresholds: {
+        CONDStatRespiringDone: { fMin: 1.0 }
+      }
     }
   }
 
   condtrigs: {
     TIsReadyRespiration: {
-      aReqs: [
-        "IsPlant",
-        "StatSugar",
-      ]
-      aForbids: [
-        "DcEnergyMax",
-      ]
+      aReqs: ["IsPlant", "StatSugar"]
+      aForbids: ["DcEnergyMax"]
     }
     TDnStatRespiring: _
   }

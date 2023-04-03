@@ -10,10 +10,10 @@ data: {
   condrules: {
     DcStatSugar: {
       strCond: "StatSugar"
-      aThresholds: [
-        { strLootNew: "CONDDcSugarMin", fMin: 0.0, fMax: 0.2 },
-        { strLootNew: "CONDDcSugarMax", fMin: 1.0, fMax: 9e99 },
-      ]
+      #Thresholds: {
+        CONDDcSugarMin: { fMax: 0.2 }
+        CONDDcSugarMax: { fMin: 1.0 }
+      }
     }
   }
 
