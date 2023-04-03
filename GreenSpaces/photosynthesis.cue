@@ -80,8 +80,6 @@ data: {
   }
 
   loot: {
-    CONDStatPhotosynthesizingDone: {
-      aCOs: ["StatPhotosynthesizingDone=1.0x1.0"]
-    }
+    CONDStatPhotosynthesizingDone: #COs: StatPhotosynthesizingDone: _
   }
 }

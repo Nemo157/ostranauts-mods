@@ -23,9 +23,9 @@ data: {
   }
 
   loot: {
-    CONDTickEnergy: aCOs: ["-StatEnergy=1.0x0.001215"]
-    CONDDcEnergyMin: aCOs: ["DcEnergyMin=1.0x1.0"]
-    CONDDcEnergyMax: aCOs: ["DcEnergyMax=1.0x1.0"]
+    CONDTickEnergy: #COs: StatEnergy: -0.001215
+    CONDDcEnergyMin: #COs: DcEnergyMin: _
+    CONDDcEnergyMax: #COs: DcEnergyMax: _
   }
 
   tickers: {

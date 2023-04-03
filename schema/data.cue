@@ -39,6 +39,24 @@ import (
 
 #ConditionRuleExpr: =~"\\w+=\\d+(\\.\\d+)?"
 
+#ConditionEquationsHelper: {
+  input: { [#Identifier]: float | *1.0 | { chance: float | *1.0, count: float | *1.0 } }
+  output: [...#ConditionEquation] & [
+    for condition, count in input if *(count >= 0.0) | false {
+        "\(condition)=\(1.0)x\(count)"
+    }
+    for condition, count in input if *(count < 0.0) | false {
+        "-\(condition)=\(1.0)x\(-count)"
+    }
+    for condition, values in input if *(values.count >= 0.0) | false {
+        "\(condition)=\(values.chance)x\(values.count)"
+    }
+    for condition, values in input if *(values.count < 0.0) | false {
+        "-\(condition)=\(values.chance)x\(-values.count)"
+    }
+  ]
+}
+
 #ConditionOwner: {
   strNameFriendly: string
   strDesc: string
@@ -53,21 +71,8 @@ import (
   nContainerHeight?: int
   nContainerWidth?: int
   aInteractions?: [...string]
-  #StartingConds: { [#Identifier]: float | *1.0 | { chance: float | *1.0, count: float | *1.0 } }
-  aStartingConds: [...#ConditionEquation] | *[
-    for condition, count in #StartingConds if *(count >= 0.0) | false {
-        "\(condition)=\(1.0)x\(count)"
-    }
-    for condition, count in #StartingConds if *(count < 0.0) | false {
-        "-\(condition)=\(1.0)x\(count)"
-    }
-    for condition, values in #StartingConds if *(values.count >= 0.0) | false {
-        "\(condition)=\(values.chance)x\(values.count)"
-    }
-    for condition, values in #StartingConds if *(values.count < 0.0) | false {
-        "-\(condition)=\(values.chance)x\(-values.count)"
-    }
-  ]
+  #StartingConds: #ConditionEquationsHelper.input
+  aStartingConds: [...#ConditionEquation] | *((#ConditionEquationsHelper & { input: #StartingConds }).output)
   #StartingCondRules: { [#Identifier]: float }
   aStartingCondRules: [...#ConditionRuleExpr] | *[
     for rule, modifier in #StartingCondRules {
@@ -174,11 +179,14 @@ import (
   CTUs?: #Identifier
   CTAllowUs?: #Identifier
   CTThem?: #Identifier
-  strCTThemMultCondUs?: #Identifier
+  strCTThemMultCondUs: #Identifier | *"StatInstallRate\(strBuildType)"
   strCTThemMultCondTools?: #Identifier
-  aInputs?: [...#ConditionEquation]
-  aToolCTsUse?: [...#Identifier]
-  aLootCOs?: [...#Identifier]
+  #Inputs: #ConditionEquationsHelper.input
+  aInputs: [...#ConditionEquation] | *((#ConditionEquationsHelper & { input: #Inputs }).output)
+  #ToolCTsUse: { [#Identifier]: _ }
+  aToolCTsUse: [...#Identifier] | *[ for condtrig, _ in #ToolCTsUse { condtrig } ]
+  #LootCOs: { [#Identifier]: _ }
+  aLootCOs: [...#Identifier] | *[ for loot, _ in #LootCOs { loot } ]
   aInverse?: [...string]
   bHeadless?: bool
   bNoJobMenu?: bool
@@ -217,8 +225,10 @@ import (
   strType: #LootType
   bSuppress?: bool
   bNested?: bool
-  aCOs?: [...#ConditionEquation]
-  aLoots?: [...#ConditionEquation]
+  #COs: #ConditionEquationsHelper.input
+  aCOs: [...#ConditionEquation] | *((#ConditionEquationsHelper & { input: #COs }).output)
+  #Loots: #ConditionEquationsHelper.input
+  aLoots: [...#ConditionEquation] | *((#ConditionEquationsHelper & { input: #Loots }).output)
 }
 
 #Ticker: {
@@ -242,7 +252,19 @@ import (
     [Name=strings.HasPrefix("TDn")]: { strCondName: strings.TrimPrefix(Name, "TDn"), fCount: -1.0 }
   }
   gasrespires: { [Name=#Identifier]: #GasRespire }
-  installables: { [Name=#Identifier]: #Installable }
+  installables: {
+    [Name=#Identifier]: #Installable
+    [strings.HasSuffix("Install")]: {
+      strJobType: "install"
+      strAllowLootCTsThem: "CONDInstallProgressx5"
+      strProgressStat: "StatInstallProgress"
+    }
+    [strings.HasSuffix("Uninstall")]: {
+      strJobType: "uninstall"
+      strAllowLootCTsThem: "CONDUninstallProgressx5"
+      strProgressStat: "StatUninstallProgress"
+    }
+  }
   items: { [Name=#Identifier]: #Item }
   loot: {
     [Name=#Identifier]: #Loot

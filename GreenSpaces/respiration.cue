@@ -79,9 +79,6 @@ data: {
   }
 
   loot: {
-    CONDStatRespiringDone: {
-      aCOs: ["StatRespiringDone=1.0x1.0"]
-      strType: "condition"
-    }
+    CONDStatRespiringDone: #COs: StatRespiringDone: _
   }
 }

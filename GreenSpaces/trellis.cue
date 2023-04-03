@@ -83,33 +83,25 @@ data: {
         strActionCO: "ItmTrellisLoose"
         strInteractionTemplate: "ACTInstallNoSparksTEMP"
         CTThem: "TIsTrellisUninstalled" 
-        aInputs: ["TIsTrellisUninstalled=1.0x1"]
+        #Inputs: TIsTrellisUninstalled: _
         fTargetPointRange: 2.0
         fDuration: 0.001
-        aToolCTsUse: ["TIsToolMortorq"]
-        aLootCOs: ["ItmTrellis"]
+        #ToolCTsUse: TIsToolMortorq: _
+        #LootCOs: ItmTrellis: _
         strStartInstall: "ItmTrellis"
         strBuildType: "FURN"
-        strJobType: "install"
-        strAllowLootCTsThem: "CONDInstallProgressx5"
-        strProgressStat: "StatInstallProgress"
         strCTThemMultCondTools: "IsToolMortorq"
-        strCTThemMultCondUs: "StatInstallRateFURN"
       }
       TrellisUninstall: {
         strActionCO: "ItmTrellis"
         strInteractionTemplate: "ACTUninstallNoSparksTEMP"
         CTThem: "TIsTrellisInstalled" 
-        aInputs: []
         fTargetPointRange: 2.0
         fDuration: 0.001
-        aToolCTsUse: ["TIsToolMortorq"]
-        aLootCOs: ["ItmTrellisLoose"]
-        strJobType: "uninstall"
-        strAllowLootCTsThem: "CONDUninstallProgressx5"
-        strProgressStat: "StatUninstallProgress"
+        #ToolCTsUse: TIsToolMortorq: _
+        #LootCOs: ItmTrellisLoose: _
+        strBuildType: "FURN"
         strCTThemMultCondTools: "IsToolMortorq"
-        strCTThemMultCondUs: "StatInstallRateFURN"
       }
   }
 
@@ -155,9 +147,9 @@ data: {
   }
 
   loot: {
-    ItmTrellis: aCOs: ["ItmTrellis=1.0x1"]
-    ItmTrellisLoose: aCOs: ["ItmTrellisLoose=1.0x1"]
-    ItmRandomLot18: aCOs: ["ItmTrellisLoose=1.0x1"]
-    ItmRandomLotCrewStartLoot18: aCOs: ["ItmTrellisLoose=1.0x1"]
+    ItmTrellis: #COs: ItmTrellis: _
+    ItmTrellisLoose: #COs: ItmTrellisLoose: _
+    ItmRandomLot18: #Loots: ItmTrellisLoose: _
+    ItmRandomLotCrewStartLoot18: #Loots: ItmTrellisLoose: _
   }
 }
