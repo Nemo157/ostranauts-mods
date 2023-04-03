@@ -18,9 +18,7 @@ _Photosynthesizeable: {
 
 data: {
   conditions: {
-    StatPhotosynthesizing: {
-      strDesc: "[us] is photosynthesizing."
-    }
+    StatPhotosynthesizing: strDesc: "[us] is photosynthesizing."
     StatPhotosynthesizingDone: {
       strDesc: "[us] has completed a round of photosynthesizing."
       aNext: [
@@ -63,14 +61,8 @@ data: {
         "DcSugarMax",
       ]
     }
-    TDnStatPhotosynthesizing: {
-      strCondName: "StatPhotosynthesizing"
-      fCount: -1.0
-    }
-    TUpStatPhotosynthesizingBlocked: {
-      strCondName: "StatPhotosynthesizingBlocked"
-      fCount: 1.0
-    }
+    TDnStatPhotosynthesizing: _
+    TUpStatPhotosynthesizingBlocked: _
   }
 
   gasrespires: {
@@ -90,7 +82,6 @@ data: {
   loot: {
     CONDStatPhotosynthesizingDone: {
       aCOs: ["StatPhotosynthesizingDone=1.0x1.0"]
-      strType: "condition"
     }
   }
 }

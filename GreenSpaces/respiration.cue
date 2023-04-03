@@ -61,10 +61,7 @@ data: {
         "DcEnergyMax",
       ]
     }
-    TDnStatRespiring: {
-      strCondName: "StatRespiring"
-      fCount: -1.0
-    }
+    TDnStatRespiring: _
   }
 
   gasrespires: {

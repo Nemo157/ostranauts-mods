@@ -2,6 +2,7 @@ package schema
 
 import (
   "list"
+  "strings"
 )
 
 #Identifier: =~"\\w+"
@@ -235,10 +236,18 @@ import (
   conditions: { [Name=#Identifier]: #Condition }
   condowners: { [Name=#Identifier]: #ConditionOwner }
   condrules: { [Name=#Identifier]: #ConditionRule }
-  condtrigs: { [Name=#Identifier]: #ConditionTrigger }
+  condtrigs: {
+    [Name=#Identifier]: #ConditionTrigger
+    [Name=strings.HasPrefix("TUp")]: { strCondName: strings.TrimPrefix(Name, "TUp"), fCount: 1.0 }
+    [Name=strings.HasPrefix("TDn")]: { strCondName: strings.TrimPrefix(Name, "TDn"), fCount: -1.0 }
+  }
   gasrespires: { [Name=#Identifier]: #GasRespire }
   installables: { [Name=#Identifier]: #Installable }
   items: { [Name=#Identifier]: #Item }
-  loot: { [Name=#Identifier]: #Loot }
+  loot: {
+    [Name=#Identifier]: #Loot
+    [strings.HasPrefix("COND")]: { strType: "condition" }
+    [strings.HasPrefix("Itm")]: { strType: "item" }
+  }
   tickers: { [Name=#Identifier]: #Ticker }
 }

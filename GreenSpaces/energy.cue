@@ -2,42 +2,30 @@ package GreenSpaces
 
 data: {
   conditions: {
-    StatEnergy: {
-      strDesc: "[us]'s current free energy."
-    }
-    DcEnergyMax: {
-      strDesc: "[us]'s is full on energy."
-    }
+    StatEnergy: strDesc: "[us]'s current free energy."
+    DcEnergyMin: strDesc: "[us]'s is nearly empty of energy."
+    DcEnergyMax: strDesc: "[us]'s is full on energy."
   }
 
   condrules: {
     DcStatEnergy: {
       strCond: "StatEnergy"
       aThresholds: [
-        { strLootNew: "CONDDcEnergyMax", fMin: 1.0, fMax: 9e99 }
+        { strLootNew: "CONDDcEnergyMin", fMin: 0.0, fMax: 0.2 },
+        { strLootNew: "CONDDcEnergyMax", fMin: 1.0, fMax: 9e99 },
       ]
     }
   }
 
   condtrigs: {
-    TUpStatEnergy: {
-      strCondName: "StatEnergy"
-    }
-    TDnStatEnergy: {
-      strCondName: "StatEnergy"
-      fCount: -1.0
-    }
+    TUpStatEnergy: _
+    TDnStatEnergy: _
   }
 
   loot: {
-    CONDTickEnergy: {
-      strType: "condition"
-      aCOs: ["-StatEnergy=1.0x0.001215"]
-    }
-    CONDDcEnergyMax: {
-      strType: "condition"
-      aCOs: ["DcEnergyMax=1.0x1.0"]
-    }
+    CONDTickEnergy: aCOs: ["-StatEnergy=1.0x0.001215"]
+    CONDDcEnergyMin: aCOs: ["DcEnergyMin=1.0x1.0"]
+    CONDDcEnergyMax: aCOs: ["DcEnergyMax=1.0x1.0"]
   }
 
   tickers: {

@@ -155,21 +155,9 @@ data: {
   }
 
   loot: {
-    ItmTrellis: {
-      aCOs: ["ItmTrellis=1.0x1"]
-      strType: "item"
-    }
-    ItmTrellisLoose: {
-      aCOs: ["ItmTrellisLoose=1.0x1"]
-      strType: "item"
-    }
-    ItmRandomLot18: {
-      aCOs: ["ItmTrellisLoose=1.0x1"]
-      strType: "item"
-    }
-    ItmRandomLotCrewStartLoot18: {
-      aCOs: ["ItmTrellisLoose=1.0x1"]
-      strType: "item"
-    }
+    ItmTrellis: aCOs: ["ItmTrellis=1.0x1"]
+    ItmTrellisLoose: aCOs: ["ItmTrellisLoose=1.0x1"]
+    ItmRandomLot18: aCOs: ["ItmTrellisLoose=1.0x1"]
+    ItmRandomLotCrewStartLoot18: aCOs: ["ItmTrellisLoose=1.0x1"]
   }
 }
