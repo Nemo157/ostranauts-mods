@@ -7,4 +7,5 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 [*.cue]
+max_line_length = 80
 indent_style = tab
