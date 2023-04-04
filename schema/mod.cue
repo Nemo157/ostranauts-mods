@@ -1,11 +1,11 @@
 package schema
 
 #Info: {
-  strAuthor: string | *""
-  strModURL: string | *""
+  strAuthor: string
+  strModURL: string
   strGameVersion: =~ "\\d+(\\.\\d+){3}"
   strModVersion: =~ "\\d+\\.\\d+"
-  strNotes: string | *""
+  strNotes: string
 }
 
 #Mod: {
