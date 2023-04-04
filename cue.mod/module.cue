@@ -1,1 +1,1 @@
-module: "nemo157.com/ostranauts-mods"
+module: "github.com/nemo157/ostranauts-mods"

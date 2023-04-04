@@ -1,7 +1,7 @@
 package GreenSpaces
 
 import (
-  "nemo157.com/ostranauts-mods/schema"
+  "github.com/nemo157/ostranauts-mods/schema"
 )
 
 data: schema.#Data

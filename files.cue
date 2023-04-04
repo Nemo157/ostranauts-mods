@@ -1,7 +1,7 @@
 package cli
 
 import (
-  "nemo157.com/ostranauts-mods/GreenSpaces"
+  "github.com/nemo157/ostranauts-mods/GreenSpaces"
 )
 
 basePath: "output"
