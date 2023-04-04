@@ -1,12 +1,14 @@
 package cli
 
 import (
+	"github.com/nemo157/ostranauts-mods/schema"
 	"github.com/nemo157/ostranauts-mods/GreenSpaces"
 )
 
 basePath: "output"
 
 mods: {
+	[string]:      schema.#Mod
 	"GreenSpaces": GreenSpaces
 }
 

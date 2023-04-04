@@ -19,6 +19,24 @@ jobs:
     - run: cue fmt . ./schema ./GreenSpaces
     - run: git diff --exit-code
 
+  line-length:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        awk '
+          BEGIN {
+            max = 80
+          }
+          length() > max {
+            print FILENAME ":" FNR " (line length " length() " > " max ")"
+            code = 1
+          }
+          END {
+            exit code
+          }
+        ' **/*.cue
+
 on:
   pull_request:
     branches: [prīmum]
