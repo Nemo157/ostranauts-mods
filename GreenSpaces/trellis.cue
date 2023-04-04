@@ -1,5 +1,9 @@
 package GreenSpaces
 
+import (
+	"strings"
+)
+
 data: {
 	conditions: {
 		IsPlant: {
@@ -16,7 +20,10 @@ data: {
 
 	condowners: {
 		_ItmTrellisBase: {
-			strDesc: "A bulkhead mounted trellis of decorative plants, commonly setup on ships for improving air quality"
+			strDesc: strings.Replace("""
+					A bulkhead mounted trellis of decorative plants,
+					commonly setup on ships for improving air quality
+				""", "\n", " ", -1)
 			strType: "item"
 			#StartingConds: {
 				IsTrellis:                _

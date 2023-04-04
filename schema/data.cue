@@ -1,10 +1,5 @@
 package schema
 
-import (
-	"list"
-	"strings"
-)
-
 #Identifier: =~"\\w+"
 
 // todo: other colors
@@ -14,7 +9,7 @@ import (
 
 #Condition: {
 	strNameFriendly?: string
-	strColor:         #Color | *"Neutral"
+	strColor:         #Color
 	strDesc:          string
 	strAnti?:         #Identifier
 	strCTImmune?:     #Identifier
@@ -39,24 +34,6 @@ import (
 
 #ConditionRuleExpr: =~"\\w+=\\d+(\\.\\d+)?"
 
-#ConditionEquationsHelper: {
-	input: {[#Identifier]: float | *1.0 | {chance: float | *1.0, count: float | *1.0}}
-	output: [...#ConditionEquation] & [
-		for condition, count in input if *(count >= 0.0) | false {
-			"\(condition)=\(1.0)x\(count)"
-		},
-		for condition, count in input if *(count < 0.0) | false {
-			"-\(condition)=\(1.0)x\(-count)"
-		},
-		for condition, values in input if *(values.count >= 0.0) | false {
-			"\(condition)=\(values.chance)x\(values.count)"
-		},
-		for condition, values in input if *(values.count < 0.0) | false {
-			"-\(condition)=\(values.chance)x\(-values.count)"
-		},
-	]
-}
-
 #ConditionOwner: {
 	strNameFriendly:   string
 	strDesc:           string
@@ -71,94 +48,47 @@ import (
 	nContainerHeight?: int
 	nContainerWidth?:  int
 	aInteractions?: [...string]
-	#StartingConds: #ConditionEquationsHelper.input
-	aStartingConds: [...#ConditionEquation] | *((#ConditionEquationsHelper & {input: #StartingConds}).output)
-	#StartingCondRules: {[#Identifier]: float}
-	aStartingCondRules: [...#ConditionRuleExpr] | *[
-				for rule, modifier in #StartingCondRules {
-			"\(rule)=\(modifier)"
-		},
-	]
+	aStartingConds?: [...#ConditionEquation]
+	aStartingCondRules?: [...#ConditionRuleExpr]
 	bSaveMessageLog?: bool
 	bSlotLocked?:     bool
 	mapPoints?: [...string]
-	#UpdateCommands: {
-		GasRespire2: {[#Identifier]: #Identifier | *"null"}
-		Destructable: {
-			[Stat=#Identifier]: {
-				LootModeSwitch:    #Identifier
-				DamageCondMax:     #Identifier | *"\(Stat)Max"
-				SignalCheckPeriod: float | *1.0
-			}
-			StatDamage?: _ | *{LootModeSwitch: "ACTDefaultDestroy"}
-		}
-	}
-	aUpdateCommands: [...#UpdateCommand] | *[
-				for id, data in #UpdateCommands.GasRespire2 {
-			"GasRespire2,\(id),\(data)"
-		},
-		for id, data in #UpdateCommands.Destructable {
-			"Destructable,\(id),\(data.LootModeSwitch),\(data.DamageCondMax),\(data.SignalCheckPeriod)"
-		},
-	]
+	aUpdateCommands?: [...#UpdateCommand]
 	mapGUIPropMaps?: [...string]
 	strPortraitImg?:  string
 	strAudioEmitter?: string
 	jsonPI?:          string
 	aSlotsWeHave?: [...string]
-	#SlotEffects: {[Slot=#Identifier]: #Identifier}
-	mapSlotEffects: [...string] | *list.FlattenN([
-			for slot, effect in #SlotEffects {
-			[slot, effect]
-		},
-	], 1)
+	mapSlotEffects?: [...string]
 	mapChargeProfiles?: [...string]
 	mapAltItemDefs?: [...string]
 	aComponents?: [...string]
-	#Tickers: {[#Identifier]: _}
-	aTickers: [...#Identifier] | *[ for ticker, _ in #Tickers {ticker}]
-}
-
-#ThresholdValues: {
-	fMinAdd: float | *1.0
-	fMaxAdd: float | *-1.0
-	fMin:    float
-	fMax:    float
+	aTickers?: [...#Identifier]
 }
 
 #Threshold: {
 	strLootNew: #Identifier
-	#ThresholdValues
+	fMinAdd:    float
+	fMaxAdd:    float
+	fMin:       float
+	fMax:       float
 }
 
 #ConditionRule: {
 	strCond: #Identifier
 	fPref?:  float
-	#Thresholds: {[#Identifier]: #ThresholdValues}
-	aThresholds: [...#Threshold] | *{
-		let keys = [ for key, _ in #Thresholds {key}]
-		[
-			for i in list.Range(0, len(keys), 1) {
-				{
-					strLootNew: keys[i]
-					fMin:       _ | *(*#Thresholds[keys[i-1]].fMax | 0.0)
-					fMax:       _ | *9e99
-					#Thresholds[keys[i]]
-				}
-			},
-		]
-	}
+	aThresholds?: [...#Threshold]
 }
 
 #ConditionTrigger: {
 	strCondName?: #Identifier
-	fChance:      float | *1.0
-	fCount:       float | *1.0
+	fChance?:     float
+	fCount?:      float
 	aReqs?: [...#Identifier]
 	aForbids?: [...#Identifier]
 	aTriggers?: [...#Identifier]
 	aTriggersForbid?: [...#Identifier]
-	bAND: bool | *true
+	bAND: bool
 }
 
 #GasRespire: {
@@ -169,17 +99,20 @@ import (
 	strGasIn:          string
 	strGasOut:         string
 	fVol:              float
-	fGasPressTotalRef: float | *101.3
-	fConvRate:         float | *1.0
-	fSignalCheckRate:  float | *1.0
+	fGasPressTotalRef: float
+	fConvRate:         float
+	fSignalCheckRate:  float
 	strSignalCTMain?:  #Identifier
 	strSignalCTA?:     #Identifier
 	strSignalCTB?:     #Identifier
-	fStatRate?:        float | *1.0
+	fStatRate?:        float
 	strStat?:          #Identifier
-	bAllowExternA:     bool | *true
-	bAllowExternB:     bool | *true
+	bAllowExternA:     bool
+	bAllowExternB:     bool
 }
+
+#BuildType: "FURN" | #Identifier
+#JobType:   "install" | "uninstall" | #Identifier
 
 #Installable: {
 	strAllowLootCTsThem?:    #Identifier
@@ -190,20 +123,17 @@ import (
 	strActionCO?:            string
 	strInteractionTemplate?: string
 	strStartInstall?:        string
-	strBuildType?:           "FURN" | #Identifier
-	strJobType?:             "install" | "uninstall" | #Identifier
+	strBuildType?:           #BuildType
+	strJobType?:             #JobType
 	strInteractionName?:     #Identifier
 	CTUs?:                   #Identifier
 	CTAllowUs?:              #Identifier
 	CTThem?:                 #Identifier
-	strCTThemMultCondUs:     #Identifier | *"StatInstallRate\(strBuildType)"
+	strCTThemMultCondUs?:    #Identifier
 	strCTThemMultCondTools?: #Identifier
-	#Inputs:                 #ConditionEquationsHelper.input
-	aInputs:                 [...#ConditionEquation] | *((#ConditionEquationsHelper & {input: #Inputs}).output)
-	#ToolCTsUse: {[#Identifier]: _}
-	aToolCTsUse: [...#Identifier] | *[ for condtrig, _ in #ToolCTsUse {condtrig}]
-	#LootCOs: {[#Identifier]: _}
-	aLootCOs: [...#Identifier] | *[ for loot, _ in #LootCOs {loot}]
+	aInputs?: [...#ConditionEquation]
+	aToolCTsUse?: [...#Identifier]
+	aLootCOs?: [...#Identifier]
 	aInverse?: [...string]
 	bHeadless?:         bool
 	bNoJobMenu?:        bool
@@ -236,16 +166,15 @@ import (
 	aShadowBoxes?: [...string]
 }
 
-#LootType: "trigger" | "condition" | "item" | "interaction" | "text" | "relationship" | "lifeevent" | "ship"
+#LootType: "trigger" | "condition" | "item" | "interaction" | "text" |
+	"relationship" | "lifeevent" | "ship"
 
 #Loot: {
 	strType:    #LootType
 	bSuppress?: bool
 	bNested?:   bool
-	#COs:       #ConditionEquationsHelper.input
-	aCOs:       [...#ConditionEquation] | *((#ConditionEquationsHelper & {input: #COs}).output)
-	#Loots:     #ConditionEquationsHelper.input
-	aLoots:     [...#ConditionEquation] | *((#ConditionEquationsHelper & {input: #Loots}).output)
+	aCOs?: [...#ConditionEquation]
+	aLoots?: [...#ConditionEquation]
 }
 
 #Ticker: {
@@ -262,37 +191,11 @@ import (
 #Data: {
 	conditions: {[Name=#Identifier]: #Condition}
 	condowners: {[Name=#Identifier]: #ConditionOwner}
-	condrules: {
-		[Name=#Identifier]: #ConditionRule
-		[Name=strings.HasPrefix("Dc")]: {strCond: strings.TrimPrefix(Name, "Dc")}
-	}
-	condtrigs: {
-		[Name=#Identifier]: #ConditionTrigger
-		[Name=strings.HasPrefix("TUp")]: {strCondName: strings.TrimPrefix(Name, "TUp"), fCount: 1.0}
-		[Name=strings.HasPrefix("TDn")]: {strCondName: strings.TrimPrefix(Name, "TDn"), fCount: -1.0}
-	}
+	condrules: {[Name=#Identifier]: #ConditionRule}
+	condtrigs: {[Name=#Identifier]: #ConditionTrigger}
 	gasrespires: {[Name=#Identifier]: #GasRespire}
-	installables: {
-		[Name=#Identifier]: #Installable
-		[strings.HasSuffix("Install")]: {
-			strJobType:          "install"
-			strAllowLootCTsThem: "CONDInstallProgressx5"
-			strProgressStat:     "StatInstallProgress"
-		}
-		[strings.HasSuffix("Uninstall")]: {
-			strJobType:          "uninstall"
-			strAllowLootCTsThem: "CONDUninstallProgressx5"
-			strProgressStat:     "StatUninstallProgress"
-		}
-	}
+	installables: {[Name=#Identifier]: #Installable}
 	items: {[Name=#Identifier]: #Item}
-	loot: {
-		[Name=#Identifier]: #Loot
-		[strings.HasPrefix("COND")]: {strType: "condition"}
-		[Name=strings.HasPrefix("CONDDc") | strings.HasPrefix("CONDStat")]: {
-			#COs: "\(strings.TrimPrefix(Name, "COND"))": _
-		}
-		[strings.HasPrefix("Itm")]: {strType: "item"}
-	}
+	loot: {[Name=#Identifier]: #Loot}
 	tickers: {[Name=#Identifier]: #Ticker}
 }
