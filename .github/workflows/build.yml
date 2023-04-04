@@ -3,7 +3,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: cue-lang/setup-cue@v1.0.0-alpha.2
+    - uses: cue-lang/setup-cue@main
     - run: cue build
     - uses: actions/upload-artifact@v3
       with:
