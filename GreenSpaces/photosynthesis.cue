@@ -68,6 +68,6 @@ data: {
   }
 
   loot: {
-    CONDStatPhotosynthesizingDone: #COs: StatPhotosynthesizingDone: _
+    CONDStatPhotosynthesizingDone: _
   }
 }

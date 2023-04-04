@@ -23,8 +23,8 @@ data: {
 
   loot: {
     CONDTickEnergy: #COs: StatEnergy: -0.001215
-    CONDDcEnergyMin: #COs: DcEnergyMin: _
-    CONDDcEnergyMax: #COs: DcEnergyMax: _
+    CONDDcEnergyMin: _
+    CONDDcEnergyMax: _
   }
 
   tickers: {

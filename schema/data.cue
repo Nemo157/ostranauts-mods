@@ -289,6 +289,9 @@ import (
   loot: {
     [Name=#Identifier]: #Loot
     [strings.HasPrefix("COND")]: { strType: "condition" }
+    [Name=strings.HasPrefix("CONDDc") | strings.HasPrefix("CONDStat")]: {
+      #COs: "\(strings.TrimPrefix(Name, "COND"))": _
+    }
     [strings.HasPrefix("Itm")]: { strType: "item" }
   }
   tickers: { [Name=#Identifier]: #Ticker }

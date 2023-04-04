@@ -23,7 +23,7 @@ data: {
   }
 
   loot: {
-    CONDDcSugarMin: #COs: DcSugarMin: _
-    CONDDcSugarMax: #COs: DcSugarMax: _
+    CONDDcSugarMin: _
+    CONDDcSugarMax: _
   }
 }

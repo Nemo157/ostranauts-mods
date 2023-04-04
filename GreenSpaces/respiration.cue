@@ -67,6 +67,6 @@ data: {
   }
 
   loot: {
-    CONDStatRespiringDone: #COs: StatRespiringDone: _
+    CONDStatRespiringDone: _
   }
 }
