@@ -48,6 +48,7 @@ data: {
       _ItmTrellisBase
       _Photosynthesizeable
       _Respirable
+      _Growable
     }
 
     ItmTrellisLoose: {
