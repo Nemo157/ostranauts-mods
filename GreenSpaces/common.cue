@@ -1,9 +1,9 @@
 package GreenSpaces
 
 data: {
-  condtrigs: {
-    TIsAirtightRoom: {
-      aReqs: ["IsAirtight", "IsRoom"]
-    }
-  }
+	condtrigs: {
+		TIsAirtightRoom: {
+			aReqs: ["IsAirtight", "IsRoom"]
+		}
+	}
 }
