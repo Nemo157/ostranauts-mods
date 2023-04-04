@@ -1,0 +1,14 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cue-lang/setup-cue@v1.0.0-alpha.2
+    - run: cue build
+    - uses: actions/upload-artifact@v3
+      with:
+        name: GreenSpaces
+        path: output/GreenSpaces
+
+on:
+  workflow_call:

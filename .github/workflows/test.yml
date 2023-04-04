@@ -1,0 +1,24 @@
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  vet:
+    name: cue vet
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cue-lang/setup-cue@v1.0.0-alpha.2
+    - run: cue vet --concrete --strict
+
+  fmt:
+    name: cue fmt
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cue-lang/setup-cue@v1.0.0-alpha.2
+    - run: cue fmt . ./schema ./GreenSpaces
+    - run: git diff --exit-code
+
+on:
+  pull_request:
+    branches: [prīmum]
