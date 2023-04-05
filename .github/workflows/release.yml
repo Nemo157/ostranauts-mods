@@ -1,0 +1,27 @@
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  release:
+    needs: [build]
+    runs-on: ubuntu-latest
+    env:
+      tag: ${{ github.ref_name }}
+    permissions:
+      contents: write
+    steps:
+    - run: echo "mod=${tag%-*}" >> "$GITHUB_ENV"
+    - run: echo "version=${tag#*-}" >> "$GITHUB_ENV"
+    - uses: actions/download-artifact@v3
+      with:
+        name: ${{ env.mod }}
+        path: ${{ env.mod }}
+    - run: zip ${{ env.mod }}-${{ env.version }}.zip ${{ env.mod }}
+    - uses: softprops/action-gh-release@v1
+      with:
+        files: ${{ env.mod }}-${{ env.version }}.zip
+
+on:
+  push:
+    tags:
+    - '*-*'
