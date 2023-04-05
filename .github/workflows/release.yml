@@ -16,7 +16,7 @@ jobs:
       with:
         name: ${{ env.mod }}
         path: ${{ env.mod }}
-    - run: zip ${{ env.mod }}-${{ env.version }}.zip ${{ env.mod }}
+    - run: zip -r ${{ env.mod }}-${{ env.version }}.zip ${{ env.mod }}
     - uses: softprops/action-gh-release@v1
       with:
         files: ${{ env.mod }}-${{ env.version }}.zip
