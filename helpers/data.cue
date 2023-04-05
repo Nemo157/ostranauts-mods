@@ -171,11 +171,13 @@ _#CEHelper: {
 		}
 
 		[strings.HasPrefix("COND")]: {strType: "condition"}
+		[strings.HasPrefix("TIL")]: {strType: "condition"}
 
 		[Name=strings.HasPrefix("CONDDc") | strings.HasPrefix("CONDStat")]: {
 			#COs: "\(strings.TrimPrefix(Name, "COND"))": _
 		}
 
 		[strings.HasPrefix("Itm")]: {strType: "item"}
+		[strings.HasPrefix("CT")]: {strType: "trigger"}
 	}
 }

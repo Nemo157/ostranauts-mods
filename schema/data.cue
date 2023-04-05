@@ -141,6 +141,79 @@ package schema
 	fTargetPointRange?: float
 }
 
+#Interaction: {
+	strTitle?:          string
+	strDesc?:           string
+	strTargetPoint?:    string
+	fTargetPointRange?: float
+	fForcedChance?:     float
+	strAnim?:           string
+	strBubble?:         string
+	strColor?:          string
+	strDuty?:           string
+	aInverse?: [...string]
+	fDuration?:              float
+	fRotation?:              float
+	strTeleport?:            string
+	strIdleAnim?:            string
+	strCancelInteraction?:   string
+	strUseCase?:             string
+	strThemType?:            string
+	strRaiseUI?:             string
+	strSubUI?:               string
+	strContextLootUs?:       string
+	strContextLootThem?:     string
+	strCTThemMultCondUs?:    string
+	strCTThemMultCondTools?: string
+	strImage?:               string
+	strMapIcon?:             string
+	strLedgerDef?:           string
+	bPause?:                 bool
+	bSocial?:                bool
+	bIgnoreFeelings?:        bool
+	bRandomInverse?:         bool
+	bCloser?:                bool
+	bGambit?:                bool
+	bOpener?:                bool
+	nLogging?:               int
+	nMoveType?:              int
+	bHardCode?:              bool
+	bHumanOnly?:             bool
+	bTargetOwned?:           bool
+	bEquip?:                 bool
+	bLot?:                   bool
+	bPassThrough?:           bool
+	bModeSwitchCheckFit?:    bool
+	bNoWait?:                bool
+	strStartInstall?:        string
+	strPledgeAdd?:           string
+	strMusic?:               string
+	bForceMusic?:            bool
+	LootCTsUs?:              string
+	LootCTsThem?:            string
+	LootCTs3rd?:             string
+	LootCondsUs?:            string
+	LootCondsThem?:          string
+	LootConds3rd?:           string
+	LootReveals?:            string
+	CTTestUs?:               string
+	CTTestThem?:             string
+	CTTestRoom?:             string
+	CTTest3rd?:              string
+	PSpecTestThem?:          string
+	PSpecTest3rd?:           string
+	aLootItms?: [...string]
+	objLootModeSwitch?:     string
+	objLootModeSwitchThem?: string
+	aSocialPrereqs?: [...string]
+	aSocialNew?: [...string]
+	strLootRELChangeThem?: string
+	strLootRELChangeUs?:   string
+	aTickersUs?: [...string]
+	aTickersThem?: [...string]
+	strSocialCombatPreview?: string
+}
+
 #Item: {
 	strImg?:          string
 	strImgNorm?:      string
@@ -177,6 +250,20 @@ package schema
 	aLoots?: [...#ConditionEquation]
 }
 
+#Slot: {
+	strNameFriendly?: string
+	strHitboxImage?:  string
+	nItems?:          int
+	nDepth?:          int
+	fAlignX?:         float
+	fAlignY?:         float
+	bAlignSlot?:      bool
+	bHoldSlot?:       bool
+	bCarried?:        bool
+	bAllowStacks?:    bool
+	bHide?:           bool
+}
+
 #Ticker: {
 	strCondLoot?:      #Identifier
 	strCondLootCoeff?: #Identifier
@@ -195,7 +282,9 @@ package schema
 	condtrigs: {[Name=#Identifier]: #ConditionTrigger}
 	gasrespires: {[Name=#Identifier]: #GasRespire}
 	installables: {[Name=#Identifier]: #Installable}
+	interactions: {[Name=#Identifier]: #Interaction}
 	items: {[Name=#Identifier]: #Item}
 	loot: {[Name=#Identifier]: #Loot}
+	slots: {[Name=#Identifier]: #Slot}
 	tickers: {[Name=#Identifier]: #Ticker}
 }
